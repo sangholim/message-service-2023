@@ -1,4 +1,4 @@
-package talk.message.service.config
+package talk.messageService.config
 
 import org.springframework.boot.autoconfigure.rsocket.RSocketProperties
 import org.springframework.context.annotation.Bean

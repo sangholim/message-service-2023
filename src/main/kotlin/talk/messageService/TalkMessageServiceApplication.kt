@@ -1,4 +1,4 @@
-package talk.message.service
+package talk.messageService
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

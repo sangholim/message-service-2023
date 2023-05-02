@@ -1,4 +1,4 @@
-package talk.message.service.chatMessage
+package talk.messageService.chatMessage
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
@@ -14,7 +14,7 @@ class ChatMessageResource(
     /**
      * client 로부터 메세지를 받아서 저장
      */
-    @MessageMapping(value = ["stream.chats"])
+    @MessageMapping(value = ["stream.chat.message"])
     suspend fun receive(@Payload inboundMessages: Flow<ChatMessageVM>) {
         chatMessageService.post(inboundMessages)
     }
@@ -22,7 +22,7 @@ class ChatMessageResource(
     /**
      * client 로 메세지 전달
      */
-    @MessageMapping(value = ["stream.chats"])
+    @MessageMapping(value = ["stream.chat.message"])
     fun send(): Flow<ChatMessageVM> = chatMessageService
             .stream()
             .onStart {

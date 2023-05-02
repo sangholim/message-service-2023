@@ -1,4 +1,4 @@
-package talk.message.service.chatMessage
+package talk.messageService.chatMessage
 
 import kotlinx.coroutines.flow.*
 import org.springframework.stereotype.Service
