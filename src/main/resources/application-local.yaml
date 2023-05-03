@@ -5,5 +5,4 @@ spring:
     server:
       transport: websocket
       port: 7000
-      address: localhost
       mapping-path: /message-service
