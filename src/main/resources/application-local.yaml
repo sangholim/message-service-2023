@@ -4,5 +4,5 @@ spring:
   rsocket:
     server:
       transport: websocket
-      port: 7000
+      port: 8080
       mapping-path: /message-service
