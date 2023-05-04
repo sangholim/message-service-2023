@@ -17,5 +17,5 @@ class ChatMessageService {
                         storage.addAll(it.toList())
                     }
 
-    fun latest(): Flow<ChatMessageVM> = flowOf(storage.last()).catch { emptyFlow<ChatMessageVM>() }
+    fun latest(): Flow<ChatMessageVM> = flowOf(storage).filter { it.isNotEmpty() }.map { it.last() }
 }
