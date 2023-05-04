@@ -6,3 +6,8 @@ spring:
       transport: websocket
       port: 8080
       mapping-path: /message-service
+
+logging:
+  level:
+    talk:
+      messageService: DEBUG
