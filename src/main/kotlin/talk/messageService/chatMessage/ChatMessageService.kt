@@ -15,12 +15,10 @@ class ChatMessageService {
     fun stream(): Flow<ChatMessageVM> = sender
 
     suspend fun post(messages: Flow<ChatMessageVM>) =
-            messages
-                    .let {
-                        storage.addAll(it.toList())
-                    }.also {
-                        logger.debug("messages: $storage")
-                    }
+            messages.collect {
+                storage.add(it)
+                logger.debug("messages: $storage")
+            }
 
     fun latest(): Flow<ChatMessageVM> = flowOf(storage).filter { it.isNotEmpty() }.map { it.last() }
 }
