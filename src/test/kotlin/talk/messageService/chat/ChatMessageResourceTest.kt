@@ -1,6 +1,7 @@
 package talk.messageService.chat
 
 import io.kotest.core.spec.style.BehaviorSpec
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import org.springframework.boot.test.context.SpringBootTest
@@ -30,7 +31,7 @@ class ChatMessageResourceTest(
                 ).retrieveFlow<Unit>().collect()
 
                 val received = chatStream("a").retrieveFlux<ChatMessageVM>()
-
+                delay(1000)
                 StepVerifier.create(received)
                         .expectNext(payload)
                         .thenCancel()

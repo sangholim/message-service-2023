@@ -7,3 +7,8 @@ spring:
       port: 8080
       address: localhost
       mapping-path: /message-service
+
+logging:
+  level:
+    talk:
+      messageService: DEBUG
