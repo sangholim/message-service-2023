@@ -10,7 +10,7 @@ object ExtensionConfig: AbstractProjectConfig() {
     val mongoDBContainer = MongoDBContainer(DockerImageName.parse("mongo:4.0.10"))
     init {
         mongoDBContainer.start()
-        System.setProperty("spring.data.mongodb.url", mongoDBContainer.replicaSetUrl)
+        System.setProperty("spring.data.mongodb.uri", mongoDBContainer.replicaSetUrl)
     }
     override fun extensions(): List<Extension> {
         return super.extensions().plus(SpringExtension)
