@@ -19,6 +19,7 @@ repositories {
 dependencies {
 	implementation(platform("io.kotest:kotest-bom:5.5.5"))
 	implementation("org.springframework.boot:spring-boot-starter-rsocket")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -30,6 +31,7 @@ dependencies {
 	testImplementation("io.kotest:kotest-assertions-core")
 	testImplementation("io.kotest:kotest-property")
 	testImplementation("org.testcontainers:testcontainers:1.17.6")
+	testImplementation("org.testcontainers:mongodb:1.18.0")
 	testImplementation("io.kotest.extensions:kotest-extensions-testcontainers:1.3.4")
 	testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
