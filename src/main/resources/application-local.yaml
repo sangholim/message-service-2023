@@ -8,7 +8,7 @@ spring:
       mapping-path: /message-service
   data:
     mongodb:
-      uri: "mongodb://admin:password@localhost:27017/message_service"
+      uri: mongodb://admin:password@localhost:27017/message_service
 logging:
   level:
     talk:

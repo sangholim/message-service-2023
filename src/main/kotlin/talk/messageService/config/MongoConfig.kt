@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.config.EnableReactiveMongoAuditing
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories
 
 @Configuration
-@EnableReactiveMongoRepositories
+@EnableReactiveMongoRepositories(basePackages = ["talk.messageService"])
 @EnableReactiveMongoAuditing
 class MongoConfig
