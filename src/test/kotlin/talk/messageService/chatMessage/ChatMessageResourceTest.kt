@@ -1,4 +1,4 @@
-package talk.messageService.chat
+package talk.messageService.chatMessage
 
 import io.kotest.core.spec.style.BehaviorSpec
 import kotlinx.coroutines.delay
