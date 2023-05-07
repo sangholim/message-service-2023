@@ -1,25 +1,32 @@
 package talk.messageService.chatMessage
 
 import kotlinx.coroutines.flow.*
-import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import talk.messageService.chatMessage.ChatMessage.Companion.chatMessage
 
 @Service
-class ChatMessageService {
-    private val storage = mutableListOf<ChatMessageVM>()
-
+class ChatMessageService(
+        private val repository: ChatMessageRepository
+) {
     val sender: MutableSharedFlow<ChatMessageVM> = MutableSharedFlow()
 
     fun stream(): Flow<ChatMessageVM> = sender
 
-    suspend fun post(messages: Flow<ChatMessageVM>) =
+    suspend fun post(chatId: String, messages: Flow<ChatMessagePayload>) =
             messages
-                    .onEach { sender.emit(it.copy()) }
-                    .collect {
-                        storage.add(it)
+                    .map {
+                        chatMessage {
+                            this.chatId = chatId
+                            this.chatParticipantId = it.chatParticipantId
+                            this.content = it.content
+                        }.run {
+                            repository.save(this)
+                        }
                     }
+                    .onEach {
+                        sender.emit(it.toView())
+                    }.collect()
 
-    fun latest(): Flow<ChatMessageVM> = flowOf(storage).filter { it.isNotEmpty() }.map {
-        it.last()
-    }
+    fun latest(chatId: String): Flow<ChatMessageVM> = repository.findAll().map(ChatMessage::toView)
+
 }
