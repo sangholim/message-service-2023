@@ -1,0 +1,19 @@
+# compose 파일 버전
+version: "3"
+services:
+  # 서비스 명
+  mongo:
+    # 사용할 이미지
+    image: mongo:latest
+    # 컨테이너 실행 시 재시작
+    restart: always
+    # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
+    ports:
+      - "27017:27017"
+    # 환경 변수 설정
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    # 볼륨 설정
+    volumes:
+      - ./data/mongo/:/var/lib/mongo/data

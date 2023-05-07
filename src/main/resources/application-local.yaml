@@ -6,7 +6,9 @@ spring:
       transport: websocket
       port: 8080
       mapping-path: /message-service
-
+  data:
+    mongodb:
+      uri: "mongodb://admin:password@localhost:27017/message_service"
 logging:
   level:
     talk:
