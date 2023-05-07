@@ -27,6 +27,7 @@ class ChatMessageService(
                         sender.emit(it.toView())
                     }.collect()
 
-    fun latest(chatId: String): Flow<ChatMessageVM> = repository.findAll().map(ChatMessage::toView)
+    fun latest(chatId: String): Flow<ChatMessageVM> =
+            repository.findAllByChatId(chatId).map(ChatMessage::toView)
 
 }
