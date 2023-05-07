@@ -1,6 +1,11 @@
 package talk.messageService.chatMessage
 
 data class ChatMessageVM(
-        val name: String,
-        val text: String
+        val chatParticipantId: String,
+        val content: String
+)
+
+fun ChatMessage.toView() = ChatMessageVM(
+        chatParticipantId = this.chatParticipantId,
+        content = this.content
 )
