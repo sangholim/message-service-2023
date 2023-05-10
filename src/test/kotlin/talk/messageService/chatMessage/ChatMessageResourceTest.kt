@@ -28,7 +28,7 @@ class ChatMessageResourceTest(
         fun chatStream(id: String) = rSocketRequester.route("stream.chats.$id.message")
 
         When("chat 메세지 정상 발송한 경우") {
-            beforeTest {
+            beforeEach {
                 repository.deleteAll()
             }
             Then("chatMessageStreamService > 1개의 메세지가 정상 수신된다") {
@@ -61,7 +61,6 @@ class ChatMessageResourceTest(
                         .expectNextCount(1)
                         .thenCancel()
                         .verify(Duration.ofSeconds(2))
-
             }
         }
     }
