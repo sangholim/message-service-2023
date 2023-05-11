@@ -24,6 +24,7 @@ class ChatMessageStreamService(
                     .listen()
                     .asFlow()
                     .filter { it.operationType == OperationType.INSERT }
+                    .filter { it.body?.chatId == id }
                     .map { it.body!!.toView() }
                     .catch { logger.error("chat-message change stream error: ${it.message}") }
 }
