@@ -1,7 +1,6 @@
 spring:
   main:
     lazy-initialization: true
-    allow-bean-definition-overriding: true
   rsocket:
     server:
       transport: websocket
