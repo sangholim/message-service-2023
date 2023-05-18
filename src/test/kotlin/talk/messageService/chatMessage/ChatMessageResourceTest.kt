@@ -12,12 +12,15 @@ import org.springframework.messaging.rsocket.dataWithType
 import org.springframework.messaging.rsocket.retrieveFlow
 import org.springframework.messaging.rsocket.retrieveFlux
 import reactor.test.StepVerifier
+import talk.messageService.config.TestSecurityConfig
 import java.time.Duration
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingQueue
 
 
-@SpringBootTest
+@SpringBootTest(
+    classes = [TestSecurityConfig::class]
+)
 class ChatMessageResourceTest(
         private val rSocketRequester: RSocketRequester,
         private val repository: ChatMessageRepository,
