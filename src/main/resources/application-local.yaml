@@ -1,12 +1,6 @@
 spring:
   main:
     lazy-initialization: true
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://resource-service:5002/authorization-service
-          jwk-set-uri: http://resource-service:5002/authorization-service/oauth2/v1/jwks
   rsocket:
     server:
       transport: websocket
