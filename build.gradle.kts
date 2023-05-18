@@ -20,7 +20,6 @@ dependencies {
 	implementation(platform("io.kotest:kotest-bom:5.5.5"))
 	implementation("org.springframework.boot:spring-boot-starter-rsocket")
 	implementation("org.springframework.security:spring-security-rsocket:6.1.0")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.security:spring-security-messaging:6.1.0")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
@@ -47,6 +46,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(module = "mockito-core")
 	}
+	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
 	testImplementation("io.projectreactor:reactor-test")
 }
 
