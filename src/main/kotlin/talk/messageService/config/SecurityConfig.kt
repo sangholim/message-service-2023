@@ -1,6 +1,6 @@
 package talk.messageService.config
 
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.rsocket.RSocketStrategies
@@ -13,10 +13,12 @@ import org.springframework.security.messaging.handler.invocation.reactive.Authen
 import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder
 import org.springframework.security.oauth2.jwt.ReactiveJwtDecoders
 import org.springframework.security.rsocket.core.PayloadSocketAcceptorInterceptor
+import talk.messageService.jwt.JwtProperties
 
 @Configuration
 @EnableRSocketSecurity
 @EnableReactiveMethodSecurity
+@EnableConfigurationProperties(JwtProperties::class)
 class SecurityConfig {
     @Bean
     fun messageHandler(strategies: RSocketStrategies): RSocketMessageHandler {
@@ -39,6 +41,6 @@ class SecurityConfig {
     }
 
     @Bean
-    fun jwtDecoder(properties: OAuth2ResourceServerProperties): ReactiveJwtDecoder =
-        ReactiveJwtDecoders.fromIssuerLocation(properties.jwt.issuerUri)
+    fun jwtDecoder(properties: JwtProperties): ReactiveJwtDecoder =
+        ReactiveJwtDecoders.fromIssuerLocation(properties.issuerUri)
 }

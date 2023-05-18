@@ -15,6 +15,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://admin:password@localhost:27017/message_service
+jwt:
+  issuer-uri: http://resource-service:5002/authorization-service
+
 logging:
   level:
     talk:
