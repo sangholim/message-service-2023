@@ -19,6 +19,11 @@ repositories {
 dependencies {
 	implementation(platform("io.kotest:kotest-bom:5.5.5"))
 	implementation("org.springframework.boot:spring-boot-starter-rsocket")
+	implementation("org.springframework.security:spring-security-rsocket:6.1.0")
+	implementation("org.springframework.security:spring-security-messaging:6.1.0")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+	implementation("org.springframework.security:spring-security-oauth2-jose:6.1.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
@@ -27,6 +32,9 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+	testImplementation ("io.jsonwebtoken:jjwt-api:0.11.2")
+	testImplementation ("io.jsonwebtoken:jjwt-impl:0.11.2")
+	testImplementation ("io.jsonwebtoken:jjwt-jackson:0.11.2")
 	testImplementation("io.kotest:kotest-runner-junit5")
 	testImplementation("io.kotest:kotest-assertions-core")
 	testImplementation("io.kotest:kotest-property")
@@ -34,7 +42,11 @@ dependencies {
 	testImplementation("org.testcontainers:mongodb:1.18.0")
 	testImplementation("io.kotest.extensions:kotest-extensions-testcontainers:1.3.4")
 	testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.2")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("com.ninja-squad:springmockk:4.0.2")
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude(module = "mockito-core")
+	}
+	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
 	testImplementation("io.projectreactor:reactor-test")
 }
 
